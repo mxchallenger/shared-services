@@ -1,0 +1,16 @@
+name: Keep Supabase Alive
+
+on:
+  schedule:
+    - cron: '*/720 * * * *'  # This cron expression will run every 12 hours.
+
+jobs:
+  keep_alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send request to Supabase
+        run: |
+          curl -X GET "https://rjptmnillqlavugrmvvt.supabase.co/rest/v1/keepalive" \
+            -H "apikey: ${{ secrets.SUPABASE_API_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}"
