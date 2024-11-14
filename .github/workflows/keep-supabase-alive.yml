@@ -2,7 +2,7 @@ name: Keep Supabase Alive
 
 on:
   schedule:
-    - cron: '*/720 * * * *'  # This cron expression will run every 12 hours.
+    - cron: '0 */12 * * *'  # This cron expression will run every 12 hours.
   workflow_dispatch:
 
 jobs:
